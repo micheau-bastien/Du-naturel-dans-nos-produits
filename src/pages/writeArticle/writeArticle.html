@@ -1,0 +1,13 @@
+<ion-grid>
+    <ion-row>
+        <ion-col>
+            <ion-item style="margin : 20px;">
+                <ion-label floating>Text</ion-label>
+                <ion-textarea [(ngModel)]="html"></ion-textarea>
+            </ion-item>
+        </ion-col>
+        <ion-col>
+            <div [innerHtml]="html"></div>
+        </ion-col>
+    </ion-row>
+</ion-grid>

@@ -1,0 +1,59 @@
+<ion-content>
+  <div>
+    <button (click)="selectedArticle = undefined" ion-button round *ngIf="selectedArticle" style="position: fixed; top : 2px;">Retour</button>
+    <!--<button [navPush]="writeArticlePage" ion-button round style="position: absolute; top : 2px; right : 2px;">Ecrire</button> -->
+    <div id="backTitle">
+      <h1 id="textTitle">Le naturel dans nos produits</h1>
+    </div>
+    <img id="imgHeader" src="https://firebasestorage.googleapis.com/v0/b/blog-laura-5479b.appspot.com/o/8881b7afcbef4c0dbf9ea77f6169176c.jpg?alt=media&token=7769daa0-c395-49ab-ab8d-290775438d8c">
+    <div style="display : flex; margin-top : 2px; max-width : 979px; margin-left: auto; margin-right: auto;">
+      <img src="https://firebasestorage.googleapis.com/v0/b/blog-laura-5479b.appspot.com/o/fullsizeoutput_25b3.jpeg?alt=media&token=f8360393-c163-4935-9322-125c5389dcc2"
+        style="max-height : 50px; max-width : 50px; object-fit: cover; border-radius: 99px; margin-left : 3px;">
+      <p style="padding-top : 20px; margin : 0px; padding-left : 5px; flex : 1; color : grey; font-size : 0.8em;">Blog de Laura Arene - INSA de Toulouse, 4A ICBE (Ingénierie Chimie Biochimie et Environnementale)</p>
+      <div class="roundyContain">
+        <a class="roundyLink" href="https://www.facebook.com/laura.arene"><img src="http://www.tecnologiabit.com/wp-content/uploads/2013/04/facebook-logo-nuevo.png" class="roundy"></a>
+        <p class="roundyText">Facebook</p>
+      </div>
+      <div class="roundyContain">
+        <a class="roundyLink" href="https://www.facebook.com/laura.arene"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" class="roundy"></a>
+        <p class="roundyText">LinkedIn</p>
+      </div>
+      <div class="roundyContain">
+        <a class="roundyLink" href="https://www.facebook.com/laura.arene"><img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Flag_of_France.png" class="roundy"></a>
+        <p class="roundyText">CV Fr</p>
+      </div>
+      <div class="roundyContain">
+        <a class="roundyLink" href="https://www.facebook.com/laura.arene"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/800px-Flag_of_the_United_Kingdom_%283-5%29.svg.png" class="roundy"></a>
+        <p class="roundyText">CV En</p>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <!-- Si il n'y a pas d'article selectionné -->
+    <ion-grid style="margin-top : 50px;" *ngIf="!selectedArticle">
+      <ion-row wrap class="row" *ngFor="let article of articles" style="margin-bottom : 80px;">
+        <div style="min-width : 300px; flex : 1;">
+          <div>
+            <h1>{{article.titre}}</h1>
+            <p style="margin-top : -10px; color : grey">Écrit le {{article.date}} par {{article.auteur}}</p>
+          </div>
+          <ion-row>
+            <img src="{{article.img}}" style="max-height : 150px; max-width : 200px; object-fit: cover;">
+            <div style="display : flex; flex-direction : column; padding-left : 20px; padding-right : 15px;">
+              <p style="flex: 1;" [innerHtml]="article.summary"></p>
+              <div style="width : 105px; margin-left : auto;">
+                <button (click)="voirPlus(article)" ion-button round>Voir plus</button>
+              </div>
+            </div>
+          </ion-row>
+        </div>
+      </ion-row>
+    </ion-grid>
+
+    <!-- Si il y a un article sélectionnée -->
+    <page-full-article *ngIf="selectedArticle" [article]="selectedArticle"></page-full-article>
+    <div style="margin-left : auto; margin-right : auto; width : 220px;">
+      <p style="color: grey; margin-top : 15px; margin-bottom : 15px;">Fait avec ❤️ par Bastien et Laura </p>
+    </div>
+  </div>
+</ion-content>
